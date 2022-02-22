@@ -38,6 +38,7 @@
         }
         if(valid){
             dispatch('add', items);
+            navigate('/');
         }
 
     }
@@ -62,11 +63,9 @@
                  <p class="error">{errors.password}</p>
         <div>
             <button class="btn btn-info" on:click={() => navigate('/')}>Cancel</button>
-            <button class="btn btn-secondary" on:click={ () =>{
-                 if(valid === true){
-                    navigate('/');
-                }
-            }} >Submit</button>
+            <button class="btn btn-secondary"
+                
+             >Submit</button>
         </div>
     </form>
 </div>
