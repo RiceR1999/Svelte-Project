@@ -3,9 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
-const db = mongoose.connect(
-  "mongodb+srv://ryanrice:320587rRd%40@cluster0.o8eyc.mongodb.net/userAPI?retryWrites=true&w=majority"
-);
+const db = mongoose.connect("mongodb://localhost/userAPI");
 const port = process.env.PORT || 8081;
 const User = require("./models/userModel");
 const userRouter = require("./routes/userRouter.js")(User);
