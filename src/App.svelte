@@ -12,8 +12,10 @@
 	import Home from "./routing/Home.svelte";
 	import Signup from "./routing/Signup.svelte";
 	import Footer from "./common/Footer.svelte";
+	import Signin from "./routing/Signin.svelte";
 
 
+	let user;
 	let users = [];
 
 	async function handleAdd (e) {
@@ -47,10 +49,14 @@
 		console.log(response.data);
 		users = response.data;
 	}
+
+	function handleSignin(e){
+		user = e.detail;
+	}
 	
 </script>
 
-<Nav></Nav>
+<Nav {user}></Nav>
 
 <div class='content'>
  <Router>	
@@ -62,6 +68,9 @@
 	</Route>
 	<Route path="/signup">
 		<Signup on:add={handleAdd} ></Signup>
+	</Route>
+	<Route path="/signin">
+		<Signin on:signin={handleSignin}></Signin>
 	</Route>
   </Router>		
 </div>

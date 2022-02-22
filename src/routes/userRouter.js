@@ -21,14 +21,20 @@ function routes(User) {
   });
 
   userRouter.route("/login").get((req, res) => {
-    const passwordLookup = req.body.password;
+    const username = req.query.username;
+    const password = req.query.password;
+    console.log(username);
     /* Find user with matching password otherwise return error */
-    const { user, error } = User.find(error, { password: passwordLookup });
-    if (error) {
-      return res.send(error);
-    } else {
-      return res.json(user);
-    }
+    User.findOne(
+      { userName: username, password: password },
+      (error, result) => {
+        if (error) {
+          return res.send(error);
+        } else {
+          return res.json(result);
+        }
+      }
+    );
   });
 
   userRouter.route("/delete/:_id").delete((req, res) => {

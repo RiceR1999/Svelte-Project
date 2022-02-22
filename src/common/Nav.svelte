@@ -1,6 +1,6 @@
 <script>
      import { Router, Route, Link } from "svelte-navigator";
-     let user="test";
+     export let user = 'test';
 </script>
 
 
